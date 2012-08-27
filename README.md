@@ -3,13 +3,19 @@ php-webdriver -- A very thin wrapper of WebDriver
 
 ##  DESCRIPTION
 
-This client aims to be as thin as possible, abusing the dynamic nature of PHP to allow almost all API calls to be a direct transformation of what is defined in the WebDriver protocol itself.
+This client aims to be as thin as possible, abusing the dynamic nature of PHP to allow almost all API calls to be a
+direct transformation of what is defined in the WebDriver protocol itself.
 
-Most clients require you to first read the protocol to see what's possible, then study the client itself to see how to call it.  This hopes to eliminate the latter step, and invites you to rely almost exclusively on http://code.google.com/p/selenium/wiki/JsonWireProtocol
+Most clients require you to first read the protocol to see what's possible, then study the client itself to see how to
+call it.  This hopes to eliminate the latter step, and invites you to rely almost exclusively
+on http://code.google.com/p/selenium/wiki/JsonWireProtocol
 
-Each command is just the name of a function call, and each additional path is just another chained function call.  The function parameter is then either an array() if the command takes JSON parameters, or an individual primitive if it takes a URL parameter.
+Each command is just the name of a function call, and each additional path is just another chained function call.
+The function parameter is then either an array() if the command takes JSON parameters, or an individual primitive
+if it takes a URL parameter.
 
-The function's return value is exactly what is returned from the server as part of the protocol definition.  If an error is returned, the function will throw the appropriate WebDriverException instance.
+The function's return value is exactly what is returned from the server as part of the protocol definition.
+If an error is returned, the function will throw the appropriate WebDriverException instance.
 
 Note - This is a maintained clone of https://github.com/facebook/php-webdriver with following differences
 
@@ -18,7 +24,9 @@ Note - This is a maintained clone of https://github.com/facebook/php-webdriver w
 
 ## RELEASE NOTES
 
-What got added, what got removed and what got fixed is listed in the (Release Notes)[https://github.com/Element-34/php-webdriver/wiki/Release-Notes]. Well, to varying degrees of detail at any rate.
+What got added, what got removed and what got fixed is listed in the
+(Release Notes)[https://github.com/Element-34/php-webdriver/wiki/Release-Notes]. Well, to varying
+degrees of detail at any rate.
 
 ##  GETTING STARTED
 
@@ -27,7 +35,8 @@ What got added, what got removed and what got fixed is listed in the (Release No
         pear channel-discover element-34.github.com/pear
         pear install -f element-34/PHPWebDriver
 
-*   All you need as the server for this client is the selenium-server-standalone-#.jar file provided here:  http://code.google.com/p/selenium/downloads/list
+*   All you need as the server for this client is the selenium-server-standalone-#.jar file provided
+here:  http://code.google.com/p/selenium/downloads/list
 
 *   Download and run that file, replacing # with the current server version.
 
@@ -71,6 +80,7 @@ What got added, what got removed and what got fixed is listed in the (Release No
 ##  SIMPLE EXAMPLES
 
 ### Note that all of these match the Protocol exactly
+
 *   Move to a specific spot on the screen
 
         // POST /session/:sessionId/moveto
@@ -86,7 +96,7 @@ What got added, what got removed and what got fixed is listed in the (Release No
         // GET /session/:sessionId/window_handles
         $session->window_handles();
 
-*   Doubleclick an element on a touch screen
+*   Double click an element on a touch screen
 
         // POST session/:sessionId/touch/doubleclick
         $session->touch()->doubleclick(array('element' => $element->getID())
@@ -103,7 +113,8 @@ What got added, what got removed and what got fixed is listed in the (Release No
 
 ## 'GET', 'POST', or 'DELETE' to the same command examples
 
-### When you can do multiple http methods for the same command, call the command directly for the 'GET', and prepend the http method for the 'POST' or 'DELETE'.
+### When you can do multiple http methods for the same command, call the command directly for the 'GET', and
+prepend the http method for the 'POST' or 'DELETE'.
 
 *   Set landscape orientation with 'POST'
 
@@ -174,7 +185,7 @@ What got added, what got removed and what got fixed is listed in the (Release No
         //
         // $cookie_array mandatory fields
         // - name: string
-        // - vale: string
+        // - value: string
         //
         // $cookie_array optional fields
         // - path: string
@@ -247,17 +258,17 @@ What got added, what got removed and what got fixed is listed in the (Release No
 
 *   Sending characters per the protocol (yuck)
 
-        $e1 = $this->session->element(PHPWebDriver_WebDriverBy::ID, "some id");
+        $e1 = $this->session->element(PHPWebDriver_WebDriverBy::ID, "someId");
         $e1->value(array("value" => array("pumpkins")));
         
 *   Sending characters a little nicer
 
-        $e2 = $this->session->element(PHPWebDriver_WebDriverBy::ID, "some id");
+        $e2 = $this->session->element(PHPWebDriver_WebDriverBy::ID, "someId");
         $e2->sendKeys("turtles");
         
 *   Sending a 'special' character (see list at https://raw.github.com/Element-34/php-webdriver/master/PHPWebDriver/WebDriverKeys.php/)
 
-        $e3 = $this->session->element(PHPWebDriver_WebDriverBy::ID, "some id");
+        $e3 = $this->session->element(PHPWebDriver_WebDriverBy::ID, "someId");
         $e3->sendKeys(PHPWebDriver_WebDriverKeys::SpaceKey());
         
 *   Advancing the page by using the space key
@@ -302,7 +313,6 @@ What got added, what got removed and what got fixed is listed in the (Release No
         
 ## Alerts
 
-
 *   switch to an alert
 
         $p = $this->session->switch_to_alert();
@@ -324,4 +334,10 @@ What got added, what got removed and what got fixed is listed in the (Release No
         $p->sendKeys('cheese');
         $p->accept();
 
-        
+## Shortening PHPWebDriver_WebDriverBy
+
+*   If you want to have more readable code, you can do the following
+
+        use \PHPWebDriver_WebDriverBy as By;
+        $iframe = self::$session->element(By::CSS_SELECTOR, "iframe");
+        $element = $this->session->element(By::ID, "someId");
