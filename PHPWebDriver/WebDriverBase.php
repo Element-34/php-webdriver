@@ -129,7 +129,7 @@ abstract class PHPWebDriver_WebDriverBase {
     }
 
     $url = sprintf('%s%s', $this->url, $command);
-    if ($params && (is_int($params) || is_string($params))) {
+    if (is_int($params) || is_string($params)) {
       $url .= '/' . $params;
     }
 
