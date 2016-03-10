@@ -299,7 +299,7 @@ $element = $session->element(PHPWebDriver_WebDriverBy::ID, $value);
         $e2 = $this->session->element(PHPWebDriver_WebDriverBy::ID, "some id");
         $e2->sendKeys("turtles");
         
-*   Sending a 'special' character (see list at [WebDriverKeys.php](https://raw.github.com/Element-34/php-webdriver/master/PHPWebDriver/WebDriverKeys.php/))
+*   Sending a 'special' character (see list at [WebDriverKeys.php](https://raw.github.com/Element-34/php-webdriver/master/PHPWebDriver/WebDriverKeys.php))
 
         $e3 = $this->session->element(PHPWebDriver_WebDriverBy::ID, "some id");
         $e3->sendKeys(PHPWebDriver_WebDriverKeys::SpaceKey());
