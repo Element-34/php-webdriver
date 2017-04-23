@@ -111,8 +111,7 @@ class PHPWebDriver_WebDriverActionChains {
     $typing = array();
     if (is_a($value, 'PHPWebDriver_WebDriverKeys')) {
       array_push($typing, $value->key);
-    }
-    if (is_int($value)) {
+    } elseif (is_int($value)) {
       $value = strval($value);
       array_push($typing, str_split($value));
     } else {
@@ -127,8 +126,7 @@ class PHPWebDriver_WebDriverActionChains {
     $typing = array();
     if (is_a($value, 'PHPWebDriver_WebDriverKeys')) {
       array_push($typing, $value->key);
-    }
-    if (is_int($value)) {
+    } elseif (is_int($value)) {
       $value = strval($value);
       array_push($typing, str_split($value));
     } else {
