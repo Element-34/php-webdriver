@@ -267,25 +267,25 @@ $element = $session->element(PHPWebDriver_WebDriverBy::ID, $value);
 
 *   To configure implicit waits (in seconds)
 
-        $this->$session->implicitlyWait(3);
+        $this->session->implicitlyWait(3);
 
 *   To disable implicit waits
 
-        $this->$session->implicitlyWait(0);
+        $this->session->implicitlyWait(0);
 
 *   How long to wait for an execute or execute_async to (in seconds)
 
-        $this->$session->setScriptTimeout(3);
+        $this->session->setScriptTimeout(3);
 
 *   How long to wait page loads to complete (in seconds)
 
-        $this->$session->setPageLoadTimeout(3);
+        $this->session->setPageLoadTimeout(3);
         
 *   How to set the above timeouts directly. Don't do this unless you really need ms granularity
 
-        $this->$session->setTimeouts(array('type' => 'implicit', 'ms' => 5));
-        $this->$session->setTimeouts(array('type' => 'script', 'ms' => 5));
-        $this->$session->setTimeouts(array('type' => 'page load', 'ms' => 5));
+        $this->session->setTimeouts(array('type' => 'implicit', 'ms' => 5));
+        $this->session->setTimeouts(array('type' => 'script', 'ms' => 5));
+        $this->session->setTimeouts(array('type' => 'page load', 'ms' => 5));
         
 ## Interacting with elements
 
@@ -370,7 +370,7 @@ $element = $session->element(PHPWebDriver_WebDriverBy::ID, $value);
 
 ## Profiles
 
-*   To send a Firefox profile over the wire to a remote Se server. It is up to you to configure it how you want.
+*   To send a Firefox profile over the wire to a remote The server. It is up to you to configure it how you want.
 
 ```php
 $driver = new PHPWebDriver_WebDriver();
